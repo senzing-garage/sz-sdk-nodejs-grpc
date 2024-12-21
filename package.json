@@ -1,0 +1,20 @@
+{
+  "name": "sz-sdk-nodejs-grpc",
+  "version": "0.0.1",
+  "scripts": {
+    "client": "tsx client.ts",
+    "examples:ts:helloworld": "tsx examples/static/helloworld.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@grpc/grpc-js": "^1.12.5",
+    "@grpc/proto-loader": "^0.7.13",
+    "google-protobuf": "^3.21.4",
+    "grpc-tools": "^1.12.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
