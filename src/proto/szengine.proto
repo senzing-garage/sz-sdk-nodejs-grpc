@@ -1,0 +1,343 @@
+syntax = "proto3";
+package szengine;
+
+option go_package = "github.com/senzing-garage/sz-sdk-go-grpc/szengine";
+option java_package = "com.senzing.sz.engine.grpc.SzEngine";
+option java_outer_classname = "SzEngineProto";
+
+service SzEngine {
+  rpc AddRecord(AddRecordRequest) returns (AddRecordResponse) {}
+  rpc CloseExport(CloseExportRequest) returns (CloseExportResponse) {}
+  rpc CountRedoRecords(CountRedoRecordsRequest) returns (CountRedoRecordsResponse) {}
+  rpc DeleteRecord(DeleteRecordRequest) returns (DeleteRecordResponse) {}
+  rpc ExportCsvEntityReport(ExportCsvEntityReportRequest) returns (ExportCsvEntityReportResponse) {}
+  rpc ExportJsonEntityReport(ExportJsonEntityReportRequest) returns (ExportJsonEntityReportResponse) {}
+  rpc FetchNext(FetchNextRequest) returns (FetchNextResponse) {}
+  rpc FindInterestingEntitiesByEntityId(FindInterestingEntitiesByEntityIdRequest) returns (FindInterestingEntitiesByEntityIdResponse) {}
+  rpc FindInterestingEntitiesByRecordId(FindInterestingEntitiesByRecordIdRequest) returns (FindInterestingEntitiesByRecordIdResponse) {}
+  rpc FindNetworkByEntityId(FindNetworkByEntityIdRequest) returns (FindNetworkByEntityIdResponse) {}
+  rpc FindNetworkByRecordId(FindNetworkByRecordIdRequest) returns (FindNetworkByRecordIdResponse) {}
+  rpc FindPathByEntityId(FindPathByEntityIdRequest) returns (FindPathByEntityIdResponse) {}
+  rpc FindPathByRecordId(FindPathByRecordIdRequest) returns (FindPathByRecordIdResponse) {}
+  rpc GetActiveConfigId(GetActiveConfigIdRequest) returns (GetActiveConfigIdResponse) {}
+  rpc GetEntityByEntityId(GetEntityByEntityIdRequest) returns (GetEntityByEntityIdResponse) {}
+  rpc GetEntityByRecordId(GetEntityByRecordIdRequest) returns (GetEntityByRecordIdResponse) {}
+  rpc GetRecord(GetRecordRequest) returns (GetRecordResponse) {}
+  rpc GetRedoRecord(GetRedoRecordRequest) returns (GetRedoRecordResponse) {}
+  rpc GetStats(GetStatsRequest) returns (GetStatsResponse) {}
+  rpc GetVirtualEntityByRecordId(GetVirtualEntityByRecordIdRequest) returns (GetVirtualEntityByRecordIdResponse) {}
+  rpc HowEntityByEntityId(HowEntityByEntityIdRequest) returns (HowEntityByEntityIdResponse) {}
+  rpc PreprocessRecord(PreprocessRecordRequest) returns (PreprocessRecordResponse) {}
+  rpc PrimeEngine(PrimeEngineRequest) returns (PrimeEngineResponse) {}
+  rpc ProcessRedoRecord(ProcessRedoRecordRequest) returns (ProcessRedoRecordResponse) {}
+  rpc ReevaluateEntity(ReevaluateEntityRequest) returns (ReevaluateEntityResponse) {}
+  rpc ReevaluateRecord(ReevaluateRecordRequest) returns (ReevaluateRecordResponse) {}
+  rpc Reinitialize (ReinitializeRequest) returns (ReinitializeResponse) {}
+  rpc SearchByAttributes(SearchByAttributesRequest) returns (SearchByAttributesResponse) {}
+  rpc StreamExportCsvEntityReport(StreamExportCsvEntityReportRequest) returns (stream StreamExportCsvEntityReportResponse) {}
+  rpc StreamExportJsonEntityReport(StreamExportJsonEntityReportRequest) returns (stream StreamExportJsonEntityReportResponse) {}
+  rpc WhyEntities(WhyEntitiesRequest) returns (WhyEntitiesResponse) {}
+  rpc WhyRecordInEntity(WhyRecordInEntityRequest) returns (WhyRecordInEntityResponse) {}
+  rpc WhyRecords(WhyRecordsRequest) returns (WhyRecordsResponse) {}
+}
+
+message AddRecordRequest {
+  string dataSourceCode = 1;
+  string recordId = 2;
+  string recordDefinition = 3;
+  int64 flags = 4;
+}
+
+message AddRecordResponse {
+   string result = 1;
+}
+
+message CloseExportRequest {
+  int64 exportHandle = 1;
+}
+
+message CloseExportResponse {}
+
+message CountRedoRecordsRequest {}
+
+message CountRedoRecordsResponse {
+  int64 result = 1;
+}
+
+message DeleteRecordRequest {
+  string dataSourceCode = 1;
+  string recordId = 2;
+  int64 flags = 3;
+}
+
+message DeleteRecordResponse {
+  string result = 1;
+}
+
+message ExportCsvEntityReportRequest {
+  string csvColumnList = 1;
+  int64 flags = 2;
+}
+
+message ExportCsvEntityReportResponse {
+  int64 result = 1;
+}
+
+message ExportJsonEntityReportRequest {
+  int64 flags = 1;
+}
+
+message ExportJsonEntityReportResponse {
+  int64 result = 1;
+}
+
+message FetchNextRequest {
+  int64 exportHandle = 1;
+}
+
+message FetchNextResponse {
+  string result = 1;
+}
+
+message FindInterestingEntitiesByEntityIdRequest {
+  int64 entityId = 1;
+  int64 flags = 2;
+}
+
+message FindInterestingEntitiesByEntityIdResponse {
+  string result = 1;
+}
+
+message FindInterestingEntitiesByRecordIdRequest {
+  string dataSourceCode = 1;
+  string recordId = 2;
+  int64 flags = 3;
+}
+
+message FindInterestingEntitiesByRecordIdResponse {
+  string result = 1;
+}
+
+message FindNetworkByEntityIdRequest {
+  string entityIds = 1;
+  int64 maxDegrees = 2;
+  int64 buildOutDegrees = 3;
+  int64 buildOutMaxEntities = 4;
+  int64 flags = 5;
+}
+
+message FindNetworkByEntityIdResponse {
+  string result = 1;
+}
+
+message FindNetworkByRecordIdRequest {
+  string recordKeys = 1;
+  int64 maxDegrees = 2;
+  int64 buildOutDegrees = 3;
+  int64 buildOutMaxEntities = 4;
+  int64 flags = 5;
+}
+
+message FindNetworkByRecordIdResponse {
+  string result = 1;
+}
+
+message FindPathByEntityIdRequest {
+  int64 startEntityId = 1;
+  int64 endEntityId = 2;
+  int64 maxDegrees = 3;
+  string avoidEntityIds = 4;
+  string requiredDataSources = 5;
+  int64 flags = 6;
+}
+
+message FindPathByEntityIdResponse {
+  string result = 1;
+}
+
+message FindPathByRecordIdRequest {
+  string startDataSourceCode = 1;
+  string startRecordId = 2;
+  string endDataSourceCode = 3;
+  string endRecordId = 4;
+  int64 maxDegrees = 5;
+  string avoidRecordKeys = 6;
+  string requiredDataSources = 7;
+  int64 flags = 8;
+}
+
+message FindPathByRecordIdResponse {
+  string result = 1;
+}
+
+message GetActiveConfigIdRequest {}
+
+message GetActiveConfigIdResponse {
+  int64 result = 1;
+}
+
+message GetEntityByEntityIdRequest {
+  int64 entityId = 1;
+  int64 flags = 2;
+}
+
+message GetEntityByEntityIdResponse {
+  string result = 1;
+}
+
+message GetEntityByRecordIdRequest {
+  string dataSourceCode = 1;
+  string recordId = 2;
+  int64 flags = 3;
+}
+
+message GetEntityByRecordIdResponse {
+  string result = 1;
+}
+
+message GetRecordRequest {
+  string dataSourceCode = 1;
+  string recordId = 2;
+  int64 flags = 3;
+}
+
+message GetRecordResponse {
+  string result = 1;
+}
+
+message GetRedoRecordRequest {}
+
+message GetRedoRecordResponse {
+  string result = 1;
+}
+
+message GetStatsRequest {}
+
+message GetStatsResponse {
+  string result = 1;
+}
+
+message GetVirtualEntityByRecordIdRequest {
+  string recordKeys = 1;
+  int64 flags = 2;
+}
+
+message GetVirtualEntityByRecordIdResponse {
+  string result = 1;
+}
+
+message HowEntityByEntityIdRequest {
+  int64 entityId = 1;
+  int64 flags = 2;
+}
+
+message HowEntityByEntityIdResponse {
+  string result = 1;
+}
+
+
+message PreprocessRecordRequest {
+  string recordDefinition = 1;
+  int64 flags = 2;
+}
+
+message PreprocessRecordResponse {
+   string result = 1;
+}
+
+message PrimeEngineRequest {}
+
+message PrimeEngineResponse {}
+
+message ProcessRedoRecordRequest {
+  string redoRecord = 1;
+  int64 flags = 2;
+}
+
+message ProcessRedoRecordResponse {
+  string result = 1;
+}
+
+message ReevaluateEntityRequest {
+  int64 entityId = 1;
+  int64 flags = 2;
+}
+
+message ReevaluateEntityResponse {
+  string result = 1;
+}
+
+message ReevaluateRecordRequest {
+  string dataSourceCode = 1;
+  string recordId = 2;
+  int64 flags = 3;
+}
+
+message ReevaluateRecordResponse {
+  string result = 1;
+}
+
+message ReinitializeRequest {
+  int64 configId = 1;
+}
+
+message ReinitializeResponse {}
+
+message SearchByAttributesRequest {
+  string attributes = 1;
+  string searchProfile = 2;
+  int64 flags = 3;
+}
+
+message SearchByAttributesResponse {
+  string result = 1;
+}
+
+message StreamExportCsvEntityReportRequest {
+  string csvColumnList = 1;
+  int64 flags = 2;
+}
+
+message StreamExportCsvEntityReportResponse {
+  string result = 1;
+}
+
+message StreamExportJsonEntityReportRequest {
+  int64 flags = 1;
+}
+
+message StreamExportJsonEntityReportResponse {
+  string result = 1;
+}
+
+message WhyEntitiesRequest {
+  int64 entityId1 = 1;
+  int64 entityId2 = 2;
+  int64 flags = 3;
+}
+
+message WhyEntitiesResponse {
+  string result = 1;
+}
+
+message WhyRecordInEntityRequest {
+  string dataSourceCode = 1;
+  string recordId = 2;
+  int64 flags = 3;
+}
+
+message WhyRecordInEntityResponse {
+  string result = 1;
+}
+
+message WhyRecordsRequest {
+  string dataSourceCode1 = 1;
+  string recordId1 = 2;
+  string dataSourceCode2 = 3;
+  string recordId2 = 4;
+  int64 flags = 5;
+}
+
+message WhyRecordsResponse {
+  string result = 1;
+}

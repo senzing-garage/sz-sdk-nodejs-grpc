@@ -2,9 +2,14 @@
   "name": "sz-sdk-nodejs-grpc",
   "version": "0.0.1",
   "scripts": {
-    "client": "tsx client.ts",
+    "build": "npm run tsc && node build.js",
+    "clean":"rm -fR dist/@senzing/sz-sdk-nodejs-grpc && rm -fR dist/@senzing/sz-sdk-nodejs-grpc.tsbuildinfo",
+    "compile":"npm run tsc",
+    "package":"cd dist/\\@senzing\\/sz-sdk-nodejs-grpc && npm pack",
+    "postpackage": "node post-pack.js",
     "examples:ts:helloworld": "tsx examples/static/helloworld.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc":"./node_modules/typescript/bin/tsc"
   },
   "author": "",
   "license": "MIT",
@@ -12,6 +17,7 @@
   "devDependencies": {
     "@grpc/grpc-js": "^1.12.5",
     "@grpc/proto-loader": "^0.7.13",
+    "@types/google-protobuf": "^3.15.12",
     "google-protobuf": "^3.21.4",
     "grpc-tools": "^1.12.4",
     "tsx": "^4.19.2",

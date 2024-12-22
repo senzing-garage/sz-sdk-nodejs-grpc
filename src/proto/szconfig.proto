@@ -1,0 +1,68 @@
+syntax = "proto3";
+package szconfig;
+
+option go_package = "github.com/senzing-garage/sz-sdk-go-grpc/szconfig";
+option java_package = "com.senzing.sz.engine.grpc.SzConfig";
+option java_outer_classname = "SzConfigProto";
+
+service SzConfig {
+  rpc AddDataSource (AddDataSourceRequest) returns (AddDataSourceResponse) {}
+  rpc CloseConfig (CloseConfigRequest) returns (CloseConfigResponse) {}
+  rpc CreateConfig (CreateConfigRequest) returns (CreateConfigResponse) {}
+  rpc DeleteDataSource (DeleteDataSourceRequest) returns (DeleteDataSourceResponse) {}
+  rpc ExportConfig (ExportConfigRequest) returns (ExportConfigResponse) {}
+  rpc GetDataSources (GetDataSourcesRequest) returns (GetDataSourcesResponse) {}
+  rpc ImportConfig (ImportConfigRequest) returns (ImportConfigResponse) {}
+}
+
+message AddDataSourceRequest {
+  int64 configHandle = 1;
+  string dataSourceCode = 2;
+}
+
+message AddDataSourceResponse {
+  string result = 1;
+}
+
+message CloseConfigRequest {
+  int64 configHandle = 1;
+}
+
+message CloseConfigResponse {}
+
+message CreateConfigRequest {}
+
+message CreateConfigResponse {
+  int64 result = 1;
+}
+
+message DeleteDataSourceRequest {
+  int64 configHandle = 1;
+  string dataSourceCode = 2;
+}
+
+message DeleteDataSourceResponse {}
+
+message ExportConfigRequest {
+  int64 configHandle = 1;
+}
+
+message ExportConfigResponse {
+  string result = 1;
+}
+
+message GetDataSourcesRequest {
+  int64 configHandle = 1;
+}
+
+message GetDataSourcesResponse {
+  string result = 1;
+}
+
+message ImportConfigRequest {
+  string configDefinition = 1;
+}
+
+message ImportConfigResponse {
+  int64 result = 1;
+}

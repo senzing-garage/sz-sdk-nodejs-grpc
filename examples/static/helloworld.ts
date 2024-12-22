@@ -2,11 +2,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
-import { SzProductClient } from '../../szproduct/szproduct_grpc_pb';
-import { GetVersionRequest, GetVersionResponse } from '../../szproduct/szproduct_pb';
+import { SzProductClient } from '../../src/szproduct/szproduct_grpc_pb';
+import { GetVersionRequest, GetVersionResponse } from '../../src/szproduct/szproduct_pb';
 
 const PORT = 8261;
-const PROTO_FILE    = '../szproduct/szproduct.proto';
+const PROTO_FILE    = '../src/proto/szproduct.proto';
 //const __filename    = fileURLToPath(import.meta.url); // get the resolved path to the file
 //const __dirname     = path.dirname(__filename); // get the name of the directory
 
