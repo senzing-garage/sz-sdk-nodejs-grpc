@@ -31,6 +31,6 @@
       "examples/**/*",
       "package-lock.json",
       "package.json",
-      "build.js"
+      "build/build.js"
     ]
 }
