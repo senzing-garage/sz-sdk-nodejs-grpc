@@ -89,7 +89,7 @@ let afterFileRenaming = () => {
     try {
         const results = replaceInFile({
             files:  [
-                'dist/@senzing/sz-sdk-nodejs-grpc/**/grpc.js'
+                'dist/@senzing/sz-sdk-nodejs-grpc/**/grpc.js',
             ],
             from:   ["szconfig_pb.js","szconfigmanager_pb.js","szdiagnostic_pb.js","szengine_pb.js","szproduct_pb.js"],
             to:     "index.js"
@@ -102,7 +102,24 @@ let afterFileRenaming = () => {
             //console.log('Replacement results:', results)
         }).catch(err => {
             console.error(err);
-        })
+        });
+        replaceInFile({
+            files:  [
+                'dist/@senzing/sz-sdk-nodejs-grpc/**/grpc.d.ts',
+            ],
+            from:   ["./szconfig_pb","./szconfigmanager_pb","./szdiagnostic_pb","./szengine_pb","./szproduct_pb"],
+            to:     "./index"
+        }).then((results) => {
+            if(results && results.forEach) {
+                results.filter((rep) => { return rep.hasChanged }).forEach((rep) => {
+                    console.log(`\t"${rep.file}"`);
+                });
+            }
+            //console.log('Replacement results:', results)
+        }).catch(err => {
+            console.error(err);
+        });
+        
     } catch (error) {
         console.error('Error occurred:', error)
     }
