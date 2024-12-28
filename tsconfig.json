@@ -29,6 +29,8 @@
       "examples/*",
       "examples/**",
       "examples/**/*",
+      "szconfig",
+      "src/**/*d.ts",
       "package-lock.json",
       "package.json",
       "build/build.js"

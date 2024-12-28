@@ -1,7 +1,7 @@
 {
   "name": "@senzing/sz-sdk-nodejs-grpc",
   "main": "./index.js",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "development@senzing.com",
   "license": "MIT",
   "description": "A node library for handling Senzing SDK gRPC connections.",
