@@ -127,34 +127,34 @@ let afterFileRenaming = () => {
 
 // go through each module directory and rename the service file(s) ending in "_gprc_pb.js" and "_gprc_pb.d.ts"
 // to "gprc.js"/"grpc.d.ts"
-renameModuleFiles([
-    ["./dist/@senzing/sz-sdk-nodejs-grpc/**/**_grpc_pb.js", "grpc.js"],
-    ["./dist/@senzing/sz-sdk-nodejs-grpc/**/**_grpc_pb.d.ts", "grpc.d.ts"]
-])
-.then(
-    (filesRenamed) => {
-        // now do the same thing for index files
-        renameModuleFiles([
-            ["./dist/@senzing/sz-sdk-nodejs-grpc/**/**_pb.js", "index.js"],
-            ["./dist/@senzing/sz-sdk-nodejs-grpc/**/**_pb.d.ts", "index.d.ts"]
-        ]).then((_fR2) => {
-            let _result = filesRenamed.concat(_fR2);
-            console.log('Renamed Package Files: \n\r');
-            _result.forEach((_rnoutput) => {
-                console.log(`\t${_rnoutput}`);
-            });
-            // now rename any import refs
-
-            afterFileRenaming();
-        });
-    },
-    (err) => {
-        console.error(err);
-    }
-).catch((errors) => {
-    console.log(`Errors Occcurred: \n\r`, errors);
-}).finally(() => {
-    //console.log('------------------- ended -------------------')
-})
+//renameModuleFiles([
+//    ["./dist/@senzing/sz-sdk-nodejs-grpc/**/**_grpc_pb.js", "grpc.js"],
+//    ["./dist/@senzing/sz-sdk-nodejs-grpc/**/**_grpc_pb.d.ts", "grpc.d.ts"]
+//])
+//.then(
+//    (filesRenamed) => {
+//        // now do the same thing for index files
+//        renameModuleFiles([
+//            ["./dist/@senzing/sz-sdk-nodejs-grpc/**/**_pb.js", "index.js"],
+//            ["./dist/@senzing/sz-sdk-nodejs-grpc/**/**_pb.d.ts", "index.d.ts"]
+//        ]).then((_fR2) => {
+//            let _result = filesRenamed.concat(_fR2);
+//            console.log('Renamed Package Files: \n\r');
+//            _result.forEach((_rnoutput) => {
+//                console.log(`\t${_rnoutput}`);
+//            });
+//            // now rename any import refs
+//
+//            afterFileRenaming();
+//        });
+//    },
+//    (err) => {
+//        console.error(err);
+//    }
+//).catch((errors) => {
+//    console.log(`Errors Occcurred: \n\r`, errors);
+//}).finally(() => {
+//    //console.log('------------------- ended -------------------')
+//})
 
 
