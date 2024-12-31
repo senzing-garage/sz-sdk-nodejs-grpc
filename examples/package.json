@@ -1,0 +1,16 @@
+{
+  "name": "@senzing/sz-sdk-nodejs-grpc_examples",
+  "version": "0.0.1",
+  "description": "examples for using @senzing/serve-grpc with nodejs",
+  "main": "index.js",
+  "scripts": {
+    "szproduct/getVersion.ts": "tsx szproduct/getVersion.ts",
+    "grpc_tools_node_protoc/helloworld.ts": "tsx grpc_tools_node_protoc/helloworld.ts"
+  },
+  "keywords": [
+    "senzing",
+    "entity-resolution"
+  ],
+  "author": "",
+  "license": "MIT"
+}

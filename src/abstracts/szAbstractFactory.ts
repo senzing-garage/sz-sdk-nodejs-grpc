@@ -7,5 +7,5 @@ export abstract class SzAbstractFactory {
     abstract createConfigManager(): undefined;
     abstract createDiagnostic(): undefined;
     abstract createEngine(): undefined;
-    abstract createProducts(): SzAbstractProduct | undefined;
+    abstract createProduct(factory: any): SzAbstractProduct | undefined;
 }

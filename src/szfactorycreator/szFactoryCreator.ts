@@ -2,20 +2,26 @@ import * as grpc from '@grpc/grpc-js';
 //import { SzProduct } from '../szProduct';
 import { SzAbstractProduct } from '../abstracts/szAbstractProduct';
 import { SzAbstractFactory as SzAbstractFactoryAbstract } from '../abstracts/szAbstractFactory';
-import { SzProduct } from '../szProduct';
+import { SzProduct as SzProductGrpc } from '../szProduct';
 
 // from "https://github.com/senzing-garage/sz-sdk-python/blob/main/src/senzing/szabstractfactory.py"
-export interface SzAbstractFactoryParameters {
-
+export interface SzAbstractFactoryOptions { 
+    connectionString: string, 
+    credentials?: grpc.ChannelCredentials
 }
 
 // from grpc package
-export class SzAbstractFactory implements SzAbstractFactoryAbstract{
+export class SzAbstractFactory extends SzAbstractFactoryAbstract{
     //private channel: grpc.Channel = undefined;
+    private connectionStr: string;
 
-    constructor(szFactoryAbstract: SzAbstractFactoryAbstract) {}
+    constructor(connectionString: string) {
+        // create gRPC client connection
+        super();
+        this.connectionStr = connectionString;
+    }
 
-    public createConfig(): undefined{
+    public createConfig(): undefined {
         return undefined;
     }
     public createConfigManager(): undefined{
@@ -28,7 +34,7 @@ export class SzAbstractFactory implements SzAbstractFactoryAbstract{
         return undefined;
     }
 
-    public createProducts(): SzProduct | undefined{
-        return undefined;
+    override createProduct(): SzProductGrpc {
+        return new SzProductGrpc({ connectionString: this.connectionStr });
     }
 }
